@@ -4,15 +4,14 @@ class App extends React.Component {
     this.state = {
       video: window.exampleVideoData[0]
     };
-    this.handleVideoListEntryClick = this.handleVideoListEntryClick.bind(this);
+    // this.handleVideoListEntryClick = this.handleVideoListEntryClick.bind(this);
   }
 
-  handleVideoListEntryClick(e) {
+  handleVideoListEntryClick(video) {
     // debugger;
     this.setState({
-      video: e.currentTarget.props.video 
-      // video: e
-      // video: video
+      // video: e.target.props.video 
+      video: video
     });
   }
 
@@ -24,7 +23,7 @@ class App extends React.Component {
           <VideoPlayer video={this.state.video}/>
         </div>
         <div className="col-md-5">
-          <VideoList entryClick={this.handleVideoListEntryClick} videos={window.exampleVideoData}/>
+          <VideoList entryClick={this.handleVideoListEntryClick.bind(this)} videos={window.exampleVideoData}/>
         </div>
       </div>
     );
