@@ -1,18 +1,18 @@
-// var VideoList = (props) => (
-//   <div className="video-list media">
-//     {props.videos.map(function(video) {
-//       <VideoListEntry entryClick={this.entryClick} video={video} />
-//     }, props)}
-//   </div>
-// );
-
 var VideoList = (props) => (
   <div className="video-list media">
-    {props.videos.map(function(video) =>
-      <VideoListEntry entryClick={props.video} video={video} />
-      )}
+    {props.videos.map(function(video) {
+      <VideoListEntry entryClick={props.entryClick} video={video} />
+    })}
   </div>
 );
+
+// var VideoList = (props) => (
+//   <div className="video-list media">
+//     {props.videos.map((video) =>
+//       <VideoListEntry entryClick={props.entryClick} video={video} />
+//     )}
+//   </div>
+// );
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
