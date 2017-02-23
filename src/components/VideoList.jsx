@@ -1,33 +1,18 @@
+// var VideoList = (props) => (
+//   <div className="video-list media">
+//     {props.videos.map(function(video) {
+//       <VideoListEntry entryClick={this.entryClick} video={video} />
+//     }, props)}
+//   </div>
+// );
+
 var VideoList = (props) => (
   <div className="video-list media">
-    {props.videos.map(video =>
-      <VideoListEntry entryClick={props.entryClick} video={video} />
-    )}
+    {props.videos.map(function(video) =>
+      <VideoListEntry entryClick={props.video} video={video} />
+      )}
   </div>
 );
-
-// VideoList.entryClick = {
-
-// };
-
-// we can't do this! because they say this and list entry should be stateless functional!
-// class VideoList extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-//   render() {
-//     return (
-//       <div className="video-list media">
-//         {props.videos.map(video =>
-//           <VideoListEntry video={video} />
-//         )}
-//       </div>
-//     );
-//   }
-// }
-
-
-// We took out 8 videoListEntry 's
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
