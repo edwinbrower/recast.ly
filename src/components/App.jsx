@@ -1,20 +1,11 @@
 class App extends React.Component {
   constructor(props) {
     super(props);
-    // window.searchYouTube();
-    // var options = {
-    //   key: window.YOUTUBE_API_KEY,
-    //   q: 'cats',
-    //   maxResults: 10,
-    // };
     this.state = {
       video: window.exampleVideoData[0],
       // video: null,
-      // videoList: props.searchYouTube(options, _.identity)
-      videoList: window.exampleVideoData
-      // videoList: []
+      videoList: []
     };
-    // this.handleVideoListEntryClick = this.handleVideoListEntryClick.bind(this);
   }
 
   handleVideoListEntryClick(video) {
@@ -26,14 +17,9 @@ class App extends React.Component {
   componentDidMount() {
     var options = {
       key: window.YOUTUBE_API_KEY,
-      q: 'beyonce',
-      maxResults: 10,
+      query: 'beyonce',
+      max: 10,
     };
-  //   this.setState = {
-  // //     // video: window.exampleVideoData[0],
-  //     videoList: props.searchYouTube(options) //, _.identity)
-  // //     // videoList: window.exampleVideoData
-  //   };
     this.getVideos(options);
   }
 
