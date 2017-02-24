@@ -2,18 +2,48 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     // window.searchYouTube();
+    // var options = {
+    //   key: window.YOUTUBE_API_KEY,
+    //   q: 'cats',
+    //   maxResults: 10,
+    // };
     this.state = {
-      video: window.exampleVideoData[0]
+      video: window.exampleVideoData[0],
+      // video: null,
+      // videoList: props.searchYouTube(options, _.identity)
+      videoList: window.exampleVideoData
+      // videoList: []
     };
     // this.handleVideoListEntryClick = this.handleVideoListEntryClick.bind(this);
   }
 
   handleVideoListEntryClick(video) {
-    // debugger;
     this.setState({
-      // video: e.target.props.video 
       video: video
     });
+  }
+
+  componentDidMount() {
+    var options = {
+      key: window.YOUTUBE_API_KEY,
+      q: 'beyonce',
+      maxResults: 10,
+    };
+  //   this.setState = {
+  // //     // video: window.exampleVideoData[0],
+  //     videoList: props.searchYouTube(options) //, _.identity)
+  // //     // videoList: window.exampleVideoData
+  //   };
+    this.getVideos(options);
+  }
+
+  getVideos(options) {
+    this.props.searchYouTube(options, (videos) => 
+      this.setState({
+        video: videos[0],
+        videoList: videos
+      })
+    );
   }
 
   render() {
@@ -24,7 +54,7 @@ class App extends React.Component {
           <VideoPlayer video={this.state.video}/>
         </div>
         <div className="col-md-5">
-          <VideoList entryClick={this.handleVideoListEntryClick.bind(this)} videos={window.exampleVideoData}/>
+          <VideoList entryClick={this.handleVideoListEntryClick.bind(this)} videos={this.state.videoList}/>
         </div>
       </div>
     );
