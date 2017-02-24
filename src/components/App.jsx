@@ -14,16 +14,20 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount() {
-    var options = {
-      key: window.YOUTUBE_API_KEY,
-      query: 'beyonce',
-      max: 10,
-    };
-    this.getVideos(options);
+  handleSearch(query) {
+    this.getVideos(query);
   }
 
-  getVideos(options) {
+  componentDidMount() {
+    this.getVideos('beyonce');
+  }
+
+  getVideos(query) {
+    var options = {
+      key: window.YOUTUBE_API_KEY,
+      query: query,
+      max: 5
+    };
     this.props.searchYouTube(options, (videos) => 
       this.setState({
         video: videos[0],
@@ -35,7 +39,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav searchResult={this.handleSearch.bind(this)} />
         <div className="col-md-7">
           <VideoPlayer video={this.state.video}/>
         </div>
